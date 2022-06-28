@@ -1,0 +1,32 @@
+{
+  "name": "kabucom-utils",
+  "version": "0.0.1",
+  "description": "kabu.com / kabu STATION API utils.",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sawara7/kabucom-utils.git"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "author": "sawara",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^27.5.1",
+    "@types/node": "^14.14.34",
+    "@types/ws": "^8.2.2",
+    "jest": "^28.1.0",
+    "ts-jest": "^28.0.2",
+    "typescript": "^4.6.4"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "axios": "^0.21.1",
+    "my-utils": "github:sawara7/my-utils",
+    "querystring": "^0.2.1",
+    "trade-utils": "github:sawara7/trade-utils",
+    "ws": "^8.3.0"
+  }
+}
