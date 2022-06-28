@@ -1,5 +1,5 @@
 import * as querystring from 'querystring'
-import { Api, ApiOptions } from './baseAPI'
+import { Api, ApiConfig, ApiOptions } from './baseAPI'
 import {
   GetTokenResponse,
   SendOrderResponse,
@@ -13,12 +13,9 @@ import {
   GetWalletMarginRequest,
 } from './requestType'
 
-const URL_API_KABUS = 'http://localhost/kabusapi'
+const URL_API_KABUS = 'http://localhost:18080/kabusapi'
 
-export interface KabuSApiConfig {
-  endPoint?: string
-  keepAlive?: boolean
-  timeout?: number
+export interface KabuSApiConfig extends ApiConfig {
   apiPassword: string
 }
 
@@ -27,19 +24,19 @@ export class KabuSApi extends Api {
   private apiToken: string;
 
   constructor(config: KabuSApiConfig, options?: ApiOptions) {
-    config.endPoint = config.endPoint || URL_API_KABUS;
-    super(config, options);
-    this.apiPassword = config.apiPassword;
-    this.apiToken = "";
-    this.initialize();
+    config.endPoint = config.endPoint || URL_API_KABUS
+    super(config, options)
+    this.apiPassword = config.apiPassword
+    this.apiToken = ""
   }
 
-  private async initialize(){
+  public async initialize(){
     const token = await this.getToken({
       APIPassword: this.apiPassword
     })
     if (token.ResultCode === 0){
-      this.apiToken = token.Token;
+      this.apiToken = token.Token
+      console.log(this.apiToken)
     }else{
       console.log('initialize error');
     }
@@ -81,7 +78,7 @@ export class KabuSApi extends Api {
 
   private makeHeader(): any {
     let header = {'Content-Type': 'application/json'};
-    if (this.apiToken === ''){
+    if (this.apiToken !== ''){
       Object.assign(header, {'X-API-KEY': this.apiToken});
     }
     return header;

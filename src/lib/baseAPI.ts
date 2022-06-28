@@ -66,13 +66,13 @@ export class Api {
     }
     
     return axios.request(options).then((res) => {
-      if (res.data.success === 1) {
+      if (res.data) {
         if (this.responseCallback) {
           this.responseCallback(res.data);
         }
         return res.data;
       } else {
-        throw new Error(res.data.data.code);
+        throw new Error(res.data);
       }
     });
   }
