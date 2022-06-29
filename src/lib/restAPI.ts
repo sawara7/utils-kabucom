@@ -5,6 +5,7 @@ import {
   SendOrderResponse,
   GetWalletCashResponse,
   GetWalletMarginResponse,
+  GetBoardResponse,
 } from './responseType'
 import {
   GetTokenRequest,
@@ -60,6 +61,11 @@ export class KabuSApi extends Api {
   public getWalletMargin(params: GetWalletMarginRequest): Promise<GetWalletMarginResponse> {
     const path = "/wallet/margin";
     return this.get(path, params);
+  }
+
+  public getBoard(symbol: string): Promise<GetBoardResponse> {
+    const path = "/board/" + symbol
+    return this.get(path, {})
   }
 
   get<T>(path: string, query?: {}) {
