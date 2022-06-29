@@ -182,3 +182,105 @@ export interface GetBoardResponse {
   // 901	日経平均225ミニ先物
   // 907	TOPIXミニ先物
 }
+
+export interface OrderDetail {
+  SeqNum: number
+  ID: string
+  RecType: number
+  // 1	受付
+  // 2	繰越
+  // 3	期限切れ
+  // 4	発注
+  // 5	訂正
+  // 6	取消
+  // 7	失効
+  // 8	約定
+  ExchangeID: string
+  State: number
+  // 1	待機（発注待機）
+  // 2	処理中（発注送信中・訂正送信中・取消送信中）
+  // 3	処理済（発注済・訂正済・取消済・全約定・期限切れ）
+  // 4	エラー
+  // 5	削除済み
+  TransactTime: string
+  OrdType: number
+  // 1	ザラバ
+  // 2	寄り
+  // 3	引け
+  // 4	不成
+  // 5	対当指値
+  // 6	IOC
+  Price: number
+  Qty: number
+  ExecutionID: string
+  ExecutionDay: string
+  DelivDay: number
+  Commission: number //手数料 ※注文詳細の明細種別が約定（RecType=8)の場合に設定。
+  CommissionTax: number //<double> 手数料消費税※明細種別は約定（RecType=8）の場合にのみ表示されます。
+}
+
+export interface GetOrderResponse {
+  ID: string
+  State: number
+  // 1	待機（発注待機）
+  // 2	処理中（発注送信中）
+  // 3	処理済（発注済・訂正済）
+  // 4	訂正取消送信中
+  // 5	終了（発注エラー・取消済・全約定・失効・期限切れ）
+  OrderState: number
+  // 1	待機（発注待機）
+  // 2	処理中（発注送信中）
+  // 3	処理済（発注済・訂正済）
+  // 4	訂正取消送信中
+  // 5	終了（発注エラー・取消済・全約定・失効・期限切れ）
+  OrdType: number
+  // 1	ザラバ
+  // 2	寄り
+  // 3	引け
+  // 4	不成
+  // 5	対当指値
+  // 6	IOC
+  RecvTime: string
+  Symbol: string
+  SymbolName: string
+  Exchange: number
+  // 1	東証
+  // 3	名証
+  // 5	福証
+  // 6	札証
+  // 9	SOR
+  // 2	日通し
+  // 23	日中
+  // 24	夜間
+  ExchangeName: string
+  TimeInForce: number
+  // 1	FAS
+  // 2	FAK
+  // 3	FOK
+  Price: number  
+  OrderQty: number
+  // 発注数量
+  // ※注文期限切れと失効の場合、OrderQtyはゼロになりません。
+  // ※期限切れと失効の確認方法としては、DetailsのRecType（3: 期限切れ、7: 失効）にてご確認ください。
+  CumQty: number
+  Side: string
+  // 1	売
+  // 2	買
+  CashMargin: number
+  // 2	新規
+  // 3	返済
+  AccountType: number
+  // 2	一般
+  // 4	特定
+  // 12	法人
+  DelivType: number
+  // 1	自動振替
+  // 2	お預り金
+  ExpireDay: number  //yyyyMMdd形式
+  MarginTradeType: number
+  // 1	制度信用
+  // 2	一般信用（長期）
+  // 3	一般信用（デイトレ）
+  MarginPremium: number
+  Details: OrderDetail[]
+}

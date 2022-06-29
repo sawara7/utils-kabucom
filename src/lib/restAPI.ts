@@ -6,12 +6,14 @@ import {
   GetWalletCashResponse,
   GetWalletMarginResponse,
   GetBoardResponse,
+  GetOrderResponse,
 } from './responseType'
 import {
   GetTokenRequest,
   SendOrderRequest,
   GetWalletCashRequest,
   GetWalletMarginRequest,
+  GetOrdersRequest,
 } from './requestType'
 
 const URL_API_KABUS = 'http://localhost:18080/kabusapi'
@@ -66,6 +68,11 @@ export class KabuSApi extends Api {
   public getBoard(symbol: string): Promise<GetBoardResponse> {
     const path = "/board/" + symbol
     return this.get(path, {})
+  }
+
+  public getOrders(params: GetOrdersRequest): Promise<GetOrderResponse[]> {
+    const path = "/orders";
+    return this.get(path, params);
   }
 
   get<T>(path: string, query?: {}) {
