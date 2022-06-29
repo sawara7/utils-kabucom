@@ -25,7 +25,7 @@ export interface SendOrderRequest {
   // 1	現物
   // 2	信用新規
   // 3	信用返済
-  MarginTradeType: number; //信用取引区分
+  MarginTradeType?: number; //信用取引区分
   // ※現物取引の場合は省略可。
   // ※信用取引の場合、必須。
   // 1	制度信用
@@ -52,7 +52,7 @@ export interface SendOrderRequest {
   // 4	特定
   // 12	法人
   Qty:number; //注文数量
-  ClosePositionOrder: number; //決済順序
+  ClosePositionOrder?: number; //決済順序
   // ※信用取引の場合、必須。
   // ※ClosePositionOrderとClosePositionsはどちらか一方のみ指定可能。
   // ※ClosePositionOrderとClosePositionsを両方指定した場合、エラー。
@@ -64,7 +64,7 @@ export interface SendOrderRequest {
   // 5	損益（高い順）、日付（新しい順）
   // 6	損益（低い順）、日付（古い順）
   // 7	損益（低い順）、日付（新しい順）
-  ClosePositions: Position[]; //返済建玉指定
+  ClosePositions?: Position[]; //返済建玉指定
   // ※信用取引の場合、必須。
   // ※ClosePositionOrderとClosePositionsはどちらか一方のみ指定可能。
   // ※ClosePositionOrderとClosePositionsを両方指定した場合、エラー。
