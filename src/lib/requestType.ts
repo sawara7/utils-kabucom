@@ -17,11 +17,12 @@ export interface SendOrderRequest {
   // 5	福証
   // 6	札証
   SecurityType: number; //1	株式
-  Side: string; //売買区分
-  // 定義値	説明
+  Side: string;
+  // 売買区分
   // 1	売
   // 2	買
-  CashMargin: number; //現物信用区分
+  CashMargin: number;
+  // 現物信用区分
   // 1	現物
   // 2	信用新規
   // 3	信用返済

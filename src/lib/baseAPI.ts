@@ -1,5 +1,5 @@
-import * as http from 'http'
-import * as https from 'https'
+// import * as http from 'http'
+// import * as https from 'https'
 import axios, { Method } from 'axios'
 
 export interface ApiOptions {
