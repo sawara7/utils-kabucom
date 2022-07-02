@@ -38,6 +38,10 @@ export class Api {
     return this.request('POST', path, {}, data, headers);
   }
 
+  async put(path: string, data?: {}, headers?: {}) {
+    return this.request('PUT', path, {}, data, headers);
+  }
+
   async request(method: Method, path: string, params?: {}, data?: {}, headers?: {}) {
     const options = {
       method: method,
