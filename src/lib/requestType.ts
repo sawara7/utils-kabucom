@@ -10,18 +10,19 @@ export interface Position {
 export interface SendOrderRequest {
   Password: string; //注文パスワード
   Symbol: string; //銘柄コード
-  Exchange: number; //市場コード
-  // 定義値	説明
+  Exchange: number;
+  // 市場コード
   // 1	東証
   // 3	名証
   // 5	福証
   // 6	札証
   SecurityType: number; //1	株式
-  Side: string; //売買区分
-  // 定義値	説明
+  Side: string;
+  // 売買区分
   // 1	売
   // 2	買
-  CashMargin: number; //現物信用区分
+  CashMargin: number;
+  // 現物信用区分
   // 1	現物
   // 2	信用新規
   // 3	信用返済
@@ -46,8 +47,8 @@ export interface SendOrderRequest {
   // AA	信用代用
   // BB	証拠金代用
   // 11	信用取引
-  AccountType: number; //口座種別
-  // 定義値	説明
+  AccountType: number;
+  // 口座種別
   // 2	一般
   // 4	特定
   // 12	法人
@@ -68,10 +69,8 @@ export interface SendOrderRequest {
   // ※信用取引の場合、必須。
   // ※ClosePositionOrderとClosePositionsはどちらか一方のみ指定可能。
   // ※ClosePositionOrderとClosePositionsを両方指定した場合、エラー。
-  Price: number; //注文価格
-  // ※FrontOrderTypeで成行を指定した場合、0を指定する。 
-  ExpireDay: number; //注文有効期限
-  //yyyyMMdd形式
+  Price: number; //注文価格 ※FrontOrderTypeで成行を指定した場合、0を指定する。 
+  ExpireDay: number; //注文有効期限 yyyyMMdd形式
   FrontOrderType: number //執行条件
 }
 
@@ -121,4 +120,9 @@ export interface GetOrdersRequest {
   cashmargin: string
   // 2	新規
   // 3	返済
+}
+
+export interface CancelOrderRequest {
+  OrderId: string //注文番号 sendorderのレスポンスで受け取るOrderID。
+  Password: string //注文パスワード
 }

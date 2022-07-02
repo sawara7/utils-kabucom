@@ -15,6 +15,7 @@ import {
   GetWalletMarginRequest,
   GetOrdersRequest,
 } from './requestType'
+import { CancelOrderRequest, CancelOrderResponse } from '..'
 
 const URL_API_KABUS = 'http://localhost:18080/kabusapi'
 
@@ -75,6 +76,11 @@ export class KabuSApi extends Api {
     return this.get(path, params);
   }
 
+  public cancelOrder(params: CancelOrderRequest): Promise<CancelOrderResponse> {
+    const path = "/cancelorder";
+    return this.put(path, params);
+  }
+
   get<T>(path: string, query?: {}) {
     let params = '';
     if (query && Object.keys(query).length) {
@@ -87,6 +93,11 @@ export class KabuSApi extends Api {
   post<T>(path: string, query: {}) {
     const headers = this.makeHeader();
     return super.post(path, query, headers);
+  }
+
+  put<T>(path: string, query: {}) {
+    const headers = this.makeHeader();
+    return super.put(path, query, headers);
   }
 
   private makeHeader(): any {

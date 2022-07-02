@@ -284,3 +284,8 @@ export interface GetOrderResponse {
   MarginPremium: number
   Details: OrderDetail[]
 }
+
+export interface CancelOrderResponse {
+  Result: number //integer <int32> 結果コード 0が成功。それ以外はエラーコード。
+  OrderId: string //受付注文番号
+}
