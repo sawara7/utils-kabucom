@@ -86,3 +86,46 @@ export interface GetBoardResponse {
     Delta: number;
     SecurityType: number;
 }
+export interface OrderDetail {
+    SeqNum: number;
+    ID: string;
+    RecType: number;
+    ExchangeID: string;
+    State: number;
+    TransactTime: string;
+    OrdType: number;
+    Price: number;
+    Qty: number;
+    ExecutionID: string;
+    ExecutionDay: string;
+    DelivDay: number;
+    Commission: number;
+    CommissionTax: number;
+}
+export interface GetOrderResponse {
+    ID: string;
+    State: number;
+    OrderState: number;
+    OrdType: number;
+    RecvTime: string;
+    Symbol: string;
+    SymbolName: string;
+    Exchange: number;
+    ExchangeName: string;
+    TimeInForce: number;
+    Price: number;
+    OrderQty: number;
+    CumQty: number;
+    Side: string;
+    CashMargin: number;
+    AccountType: number;
+    DelivType: number;
+    ExpireDay: number;
+    MarginTradeType: number;
+    MarginPremium: number;
+    Details: OrderDetail[];
+}
+export interface CancelOrderResponse {
+    Result: number;
+    OrderId: string;
+}

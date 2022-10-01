@@ -50,7 +50,6 @@ class KabuSApi extends baseAPI_1.Api {
             });
             if (token.ResultCode === 0) {
                 this.apiToken = token.Token;
-                console.log(this.apiToken);
             }
             else {
                 console.log('initialize error');
@@ -77,6 +76,14 @@ class KabuSApi extends baseAPI_1.Api {
         const path = "/board/" + symbol;
         return this.get(path, {});
     }
+    getOrders(params) {
+        const path = "/orders";
+        return this.get(path, params);
+    }
+    cancelOrder(params) {
+        const path = "/cancelorder";
+        return this.put(path, params);
+    }
     get(path, query) {
         let params = '';
         if (query && Object.keys(query).length) {
@@ -88,6 +95,10 @@ class KabuSApi extends baseAPI_1.Api {
     post(path, query) {
         const headers = this.makeHeader();
         return super.post(path, query, headers);
+    }
+    put(path, query) {
+        const headers = this.makeHeader();
+        return super.put(path, query, headers);
     }
     makeHeader() {
         let header = { 'Content-Type': 'application/json' };

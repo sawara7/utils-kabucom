@@ -40,7 +40,6 @@ export class KabuSApi extends Api {
     })
     if (token.ResultCode === 0){
       this.apiToken = token.Token
-      console.log(this.apiToken)
     }else{
       console.log('initialize error');
     }

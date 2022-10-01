@@ -13,6 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Api = void 0;
+// import * as http from 'http'
+// import * as https from 'https'
 const axios_1 = __importDefault(require("axios"));
 class Api {
     constructor(config, options) {
@@ -32,6 +34,11 @@ class Api {
     post(path, data, headers) {
         return __awaiter(this, void 0, void 0, function* () {
             return this.request('POST', path, {}, data, headers);
+        });
+    }
+    put(path, data, headers) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.request('PUT', path, {}, data, headers);
         });
     }
     request(method, path, params, data, headers) {

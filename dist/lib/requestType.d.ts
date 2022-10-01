@@ -29,3 +29,17 @@ export interface GetWalletCashRequest {
 export interface GetWalletMarginRequest {
     APIPassword: string;
 }
+export interface GetOrdersRequest {
+    product: string;
+    id: string;
+    updtime: string;
+    details: string;
+    symbol: string;
+    state: string;
+    side: string;
+    cashmargin: string;
+}
+export interface CancelOrderRequest {
+    OrderId: string;
+    Password: string;
+}

@@ -17,5 +17,6 @@ export declare class Api {
     constructor(config: ApiConfig, options?: ApiOptions);
     get(path: string, params?: {}, headers?: {}): Promise<any>;
     post(path: string, data?: {}, headers?: {}): Promise<any>;
+    put(path: string, data?: {}, headers?: {}): Promise<any>;
     request(method: Method, path: string, params?: {}, data?: {}, headers?: {}): Promise<any>;
 }
