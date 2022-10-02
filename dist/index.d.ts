@@ -1,3 +1,4 @@
+export * from './lib/type';
 export * from './lib/baseAPI';
 export * from './lib/restAPI';
 export * from './lib/requestType';

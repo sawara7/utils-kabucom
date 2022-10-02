@@ -76,6 +76,10 @@ class KabuSApi extends baseAPI_1.Api {
         const path = "/board/" + symbol;
         return this.get(path, {});
     }
+    getPositions(params) {
+        const path = "/positions";
+        return this.get(path, params);
+    }
     getOrders(params) {
         const path = "/orders";
         return this.get(path, params);

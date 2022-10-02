@@ -129,3 +129,26 @@ export interface CancelOrderResponse {
     Result: number;
     OrderId: string;
 }
+export interface GetPositionResponse {
+    ExecutionID: string;
+    AccountType: number;
+    Symbol: string;
+    SymbolName: string;
+    Exchange: number;
+    ExchangeName: string;
+    SecurityType: number;
+    ExecutionDay: number;
+    Price: number;
+    LeavesQty: number;
+    HoldQty: number;
+    Side: string;
+    Expenses: number;
+    Commission: number;
+    CommissionTax: number;
+    ExpireDay: number;
+    MarginTradeType: number;
+    CurrentPrice: number;
+    Valuation: number;
+    ProfitLoss: number;
+    ProfitLossRate: number;
+}

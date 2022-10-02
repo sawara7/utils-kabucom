@@ -1,3 +1,5 @@
+import { exchangeCodeType, OrderSide, productType, stringBoolean } from "./type";
+
 export interface GetTokenRequest {
   APIPassword: string;
 }
@@ -10,17 +12,9 @@ export interface Position {
 export interface SendOrderRequest {
   Password: string; //注文パスワード
   Symbol: string; //銘柄コード
-  Exchange: number;
-  // 市場コード
-  // 1	東証
-  // 3	名証
-  // 5	福証
-  // 6	札証
+  Exchange: exchangeCodeType; // 市場コード
   SecurityType: number; //1	株式
-  Side: string;
-  // 売買区分
-  // 1	売
-  // 2	買
+  Side: OrderSide;
   CashMargin: number;
   // 現物信用区分
   // 1	現物
@@ -83,12 +77,7 @@ export interface GetWalletMarginRequest{
 }
 
 export interface GetOrdersRequest {
-  product: string
-  // 0	すべて
-  // 1	現物
-  // 2	信用
-  // 3	先物
-  // 4	OP
+  product: productType
   id: string
   // 注文番号
   // ※指定された注文番号と一致する注文のみレスポンスします。
@@ -114,9 +103,7 @@ export interface GetOrdersRequest {
   // 3	処理済（発注済・訂正済）
   // 4	訂正取消送信中
   // 5	終了（発注エラー・取消済・全約定・失効・期限切れ）
-  side: string
-  // 1	売
-  // 2	買
+  side: OrderSide
   cashmargin: string
   // 2	新規
   // 3	返済
@@ -125,4 +112,18 @@ export interface GetOrdersRequest {
 export interface CancelOrderRequest {
   OrderId: string //注文番号 sendorderのレスポンスで受け取るOrderID。
   Password: string //注文パスワード
+}
+
+export interface GetPositionsRequest {
+  product?: productType
+  symbol?: string
+  // 銘柄コード
+  // ※指定された銘柄コードと一致するポジションのみレスポンスします。
+  // ※複数の銘柄コードを指定することはできません。
+  side?: OrderSide
+  addinfo?: stringBoolean
+  // 追加情報出力フラグ（未指定時：true）
+  // ※追加情報は、「現在値」、「評価金額」、「評価損益額」、「評価損益率」を意味します。
+  // true	追加情報を出力する
+  // false	追加情報を出力しない
 }

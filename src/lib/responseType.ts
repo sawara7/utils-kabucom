@@ -289,3 +289,45 @@ export interface CancelOrderResponse {
   Result: number //integer <int32> 結果コード 0が成功。それ以外はエラーコード。
   OrderId: string //受付注文番号
 }
+
+export interface GetPositionResponse {
+  ExecutionID: string // 約定番号 ※現物取引では、nullが返ります。
+  AccountType: number // 口座種別 2	一般 4	特定 12	法人
+  Symbol: string //銘柄コード
+  SymbolName: string //銘柄名
+  Exchange: number //市場コード
+  // 1	東証
+  // 3	名証
+  // 5	福証
+  // 6	札証
+  // 2	日通し
+  // 23	日中
+  // 24	夜間
+  ExchangeName: string //市場名
+  SecurityType: number //銘柄種別 ※先物・オプション銘柄の場合のみ
+  ExecutionDay: number
+  // 約定日（建玉日）
+  // ※信用・先物・オプションの場合のみ
+  // ※現物取引では、nullが返ります。
+  Price: number //値段
+  LeavesQty: number //残数量（保有数量）
+  HoldQty: number //拘束数量（返済のために拘束されている数量）
+  Side: string
+  // 売買区分
+  // 定義値	説明
+  // 1	売
+  // 2	買
+  Expenses: number //諸経費 ※信用・先物・オプションの場合のみ
+  Commission: number //手数料 ※信用・先物・オプションの場合のみ
+  CommissionTax: number //手数料消費税 ※信用・先物・オプションの場合のみ
+  ExpireDay: number //返済期日 ※信用・先物・オプションの場合のみ
+  MarginTradeType: number //信用取引区分 ※信用の場合のみ
+  // 定義値	説明
+  // 1	制度信用
+  // 2	一般信用（長期）
+  // 3	一般信用（デイトレ）
+  CurrentPrice: number //現在値 追加情報出力フラグ：falseの場合、null
+  Valuation: number //評価金額 追加情報出力フラグ：falseの場合、null
+  ProfitLoss: number //評価損益額 追加情報出力フラグ：falseの場合、null
+  ProfitLossRate: number //評価損益率 追加情報出力フラグ：falseの場合、null
+}

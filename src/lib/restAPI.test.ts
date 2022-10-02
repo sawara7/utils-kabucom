@@ -27,4 +27,8 @@ import { KabuSApi } from '..'
     //     ExpireDay: 20220630,
     //     FrontOrderType: 20
     // })
+    const res3 = await api.getPositions({
+        addinfo: "true"
+    })
+    console.log(res3)
 })()

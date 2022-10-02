@@ -7,6 +7,7 @@ import {
   GetWalletMarginResponse,
   GetBoardResponse,
   GetOrderResponse,
+  GetPositionResponse,
 } from './responseType'
 import {
   GetTokenRequest,
@@ -14,6 +15,7 @@ import {
   GetWalletCashRequest,
   GetWalletMarginRequest,
   GetOrdersRequest,
+  GetPositionsRequest,
 } from './requestType'
 import { CancelOrderRequest, CancelOrderResponse } from '..'
 
@@ -68,6 +70,11 @@ export class KabuSApi extends Api {
   public getBoard(symbol: string): Promise<GetBoardResponse> {
     const path = "/board/" + symbol
     return this.get(path, {})
+  }
+
+  public getPositions(params: GetPositionsRequest): Promise<GetPositionResponse[]> {
+    const path = "/positions"
+    return this.get(path, params)
   }
 
   public getOrders(params: GetOrdersRequest): Promise<GetOrderResponse[]> {

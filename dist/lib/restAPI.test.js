@@ -37,4 +37,8 @@ const __1 = require("..");
     //     ExpireDay: 20220630,
     //     FrontOrderType: 20
     // })
+    const res3 = yield api.getPositions({
+        addinfo: "true"
+    });
+    console.log(res3);
 }))();
