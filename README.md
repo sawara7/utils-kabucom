@@ -1,5 +1,6 @@
 # kabucom-utils
 kabu STATION APIのラッパーライブラリ
+※kabuステーションは早朝、強制的にログアウトされるので対策が必要
 
 ## ライブラリのインストール
 ```
@@ -50,3 +51,12 @@ const res = await api.getWalletCash({
     APIPassword: 'kabu STATIONで設定したパスワード'
 })
 ```
+
+### カブステーションの起動
+
+
+### カブステーションのシャットダウン
+Stop-Process -Name "KabuS"
+
+### Power AutoMate Desktopを定期実行する方法
+https://note.com/airily_inc/n/n6ab8b688d4ad

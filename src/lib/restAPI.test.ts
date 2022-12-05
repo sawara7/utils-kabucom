@@ -31,4 +31,9 @@ import { KabuSApi } from '..'
         addinfo: "true"
     })
     console.log(res3)
+
+    const res4 = await api.getOrders({
+        
+    })
+    console.log(res4)
 })()

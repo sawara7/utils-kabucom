@@ -1,4 +1,4 @@
-import { exchangeCodeType, OrderSide, productType, stringBoolean } from "./type";
+import { exchangeCodeType, OrderSide, productType, SecurityType, stringBoolean } from "./type";
 
 export interface GetTokenRequest {
   APIPassword: string;
@@ -13,7 +13,7 @@ export interface SendOrderRequest {
   Password: string; //注文パスワード
   Symbol: string; //銘柄コード
   Exchange: exchangeCodeType; // 市場コード
-  SecurityType: number; //1	株式
+  SecurityType: SecurityType; //1	株式
   Side: OrderSide;
   CashMargin: number;
   // 現物信用区分
@@ -77,34 +77,34 @@ export interface GetWalletMarginRequest{
 }
 
 export interface GetOrdersRequest {
-  product: productType
-  id: string
+  product?: productType
+  id?: string
   // 注文番号
   // ※指定された注文番号と一致する注文のみレスポンスします。
   // ※指定された注文番号との比較では大文字小文字を区別しません。
   // ※複数の注文番号を指定することはできません。
-  updtime: string
+  updtime?: string
   // 更新日時
   // ※形式：yyyyMMddHHmmss （例：20201201123456）
   // ※指定された更新日時以降（指定日時含む）に更新された注文のみレスポンスします。
   // ※複数の更新日時を指定することはできません。
-  details: string
+  details?: string
   // 注文詳細抑止
   // 定義値	説明
   // true	注文詳細を出力する（デフォルト）
   // false	注文詳細の出力しない
-  symbol: string
+  symbol?: string
   // 銘柄コード
   // ※指定された銘柄コードと一致する注文のみレスポンスします。
   // ※複数の銘柄コードを指定することができません。
-  state: string
+  state?: string
   // 1	待機（発注待機）
   // 2	処理中（発注送信中）
   // 3	処理済（発注済・訂正済）
   // 4	訂正取消送信中
   // 5	終了（発注エラー・取消済・全約定・失効・期限切れ）
-  side: OrderSide
-  cashmargin: string
+  side?: OrderSide
+  cashmargin?: string
   // 2	新規
   // 3	返済
 }

@@ -1,3 +1,4 @@
+import { exchangeCodeType, OrderSide } from "..";
 export interface GetTokenResponse {
     ResultCode: number;
     Token: string;
@@ -24,7 +25,7 @@ export interface BoardInfo {
 export interface GetBoardResponse {
     Symbol: string;
     SymbolName: string;
-    Exchange: number;
+    Exchange: exchangeCodeType;
     ExchangeName: string;
     CurrentPrice: number;
     CurrentPriceTime: string;
@@ -110,13 +111,13 @@ export interface GetOrderResponse {
     RecvTime: string;
     Symbol: string;
     SymbolName: string;
-    Exchange: number;
+    Exchange: exchangeCodeType;
     ExchangeName: string;
     TimeInForce: number;
     Price: number;
     OrderQty: number;
     CumQty: number;
-    Side: string;
+    Side: OrderSide;
     CashMargin: number;
     AccountType: number;
     DelivType: number;
@@ -134,14 +135,14 @@ export interface GetPositionResponse {
     AccountType: number;
     Symbol: string;
     SymbolName: string;
-    Exchange: number;
+    Exchange: exchangeCodeType;
     ExchangeName: string;
     SecurityType: number;
     ExecutionDay: number;
     Price: number;
     LeavesQty: number;
     HoldQty: number;
-    Side: string;
+    Side: OrderSide;
     Expenses: number;
     Commission: number;
     CommissionTax: number;

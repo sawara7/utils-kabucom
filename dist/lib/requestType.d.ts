@@ -1,4 +1,4 @@
-import { exchangeCodeType, OrderSide, productType, stringBoolean } from "./type";
+import { exchangeCodeType, OrderSide, productType, SecurityType, stringBoolean } from "./type";
 export interface GetTokenRequest {
     APIPassword: string;
 }
@@ -10,7 +10,7 @@ export interface SendOrderRequest {
     Password: string;
     Symbol: string;
     Exchange: exchangeCodeType;
-    SecurityType: number;
+    SecurityType: SecurityType;
     Side: OrderSide;
     CashMargin: number;
     MarginTradeType?: number;
@@ -31,14 +31,14 @@ export interface GetWalletMarginRequest {
     APIPassword: string;
 }
 export interface GetOrdersRequest {
-    product: productType;
-    id: string;
-    updtime: string;
-    details: string;
-    symbol: string;
-    state: string;
-    side: OrderSide;
-    cashmargin: string;
+    product?: productType;
+    id?: string;
+    updtime?: string;
+    details?: string;
+    symbol?: string;
+    state?: string;
+    side?: OrderSide;
+    cashmargin?: string;
 }
 export interface CancelOrderRequest {
     OrderId: string;

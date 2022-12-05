@@ -12,10 +12,14 @@ export type productType = typeof productTypes
 
 // 市場コード
 export const exchangeCode = [
-    1, //東証
-    3, //名証
-    5, //福証
-    6  //札証
+    1,  //東証
+    3,  //名証
+    5,  //福証
+    6,  //札証
+    9,  //SOR
+    2,  //日通し
+    23, //日中
+    24  //夜間
 ] as const
 export type exchangeCodeType = typeof exchangeCode
 
@@ -25,3 +29,5 @@ export const orderSides = [
   "2"   //買
 ] as const
 export type OrderSide = typeof orderSides
+
+export type SecurityType = 1

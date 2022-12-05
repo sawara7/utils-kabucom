@@ -14,7 +14,11 @@ exports.exchangeCode = [
     1,
     3,
     5,
-    6 //札証
+    6,
+    9,
+    2,
+    23,
+    24 //夜間
 ];
 // 売買区分
 exports.orderSides = [

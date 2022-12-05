@@ -1,3 +1,5 @@
+import { exchangeCodeType, OrderSide } from "..";
+
 export interface GetTokenResponse {
   ResultCode: number;
   Token: string;
@@ -28,16 +30,7 @@ export interface BoardInfo {
 export interface GetBoardResponse {
   Symbol: string //銘柄コード
   SymbolName: string //銘柄名
-  Exchange: number //integer <int32>
-  // 市場コード※株式・先物・オプション銘柄の場合のみ
-  // 定義値	説明
-  // 1	東証
-  // 3	名証
-  // 5	福証
-  // 6	札証
-  // 2	日通し
-  // 23	日中
-  // 24	夜間
+  Exchange: exchangeCodeType
   ExchangeName: string //市場名称 ※株式・先物・オプション銘柄の場合のみ
   CurrentPrice: number //number <double> 現値
   CurrentPriceTime:	string //<date-time> 現値時刻
@@ -243,15 +236,7 @@ export interface GetOrderResponse {
   RecvTime: string
   Symbol: string
   SymbolName: string
-  Exchange: number
-  // 1	東証
-  // 3	名証
-  // 5	福証
-  // 6	札証
-  // 9	SOR
-  // 2	日通し
-  // 23	日中
-  // 24	夜間
+  Exchange: exchangeCodeType
   ExchangeName: string
   TimeInForce: number
   // 1	FAS
@@ -263,9 +248,7 @@ export interface GetOrderResponse {
   // ※注文期限切れと失効の場合、OrderQtyはゼロになりません。
   // ※期限切れと失効の確認方法としては、DetailsのRecType（3: 期限切れ、7: 失効）にてご確認ください。
   CumQty: number
-  Side: string
-  // 1	売
-  // 2	買
+  Side: OrderSide
   CashMargin: number
   // 2	新規
   // 3	返済
@@ -295,14 +278,7 @@ export interface GetPositionResponse {
   AccountType: number // 口座種別 2	一般 4	特定 12	法人
   Symbol: string //銘柄コード
   SymbolName: string //銘柄名
-  Exchange: number //市場コード
-  // 1	東証
-  // 3	名証
-  // 5	福証
-  // 6	札証
-  // 2	日通し
-  // 23	日中
-  // 24	夜間
+  Exchange: exchangeCodeType
   ExchangeName: string //市場名
   SecurityType: number //銘柄種別 ※先物・オプション銘柄の場合のみ
   ExecutionDay: number
@@ -312,11 +288,7 @@ export interface GetPositionResponse {
   Price: number //値段
   LeavesQty: number //残数量（保有数量）
   HoldQty: number //拘束数量（返済のために拘束されている数量）
-  Side: string
-  // 売買区分
-  // 定義値	説明
-  // 1	売
-  // 2	買
+  Side: OrderSide
   Expenses: number //諸経費 ※信用・先物・オプションの場合のみ
   Commission: number //手数料 ※信用・先物・オプションの場合のみ
   CommissionTax: number //手数料消費税 ※信用・先物・オプションの場合のみ

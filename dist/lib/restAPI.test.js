@@ -41,4 +41,6 @@ const __1 = require("..");
         addinfo: "true"
     });
     console.log(res3);
+    const res4 = yield api.getOrders({});
+    console.log(res4);
 }))();
