@@ -1,6 +1,6 @@
 import { Api, ApiConfig, ApiOptions } from './baseAPI';
 import { SendOrderResponse, GetWalletCashResponse, GetWalletMarginResponse, GetBoardResponse, GetOrderResponse, GetPositionResponse } from './responseType';
-import { SendOrderRequest, GetWalletCashRequest, GetWalletMarginRequest, GetOrdersRequest, GetPositionsRequest } from './requestType';
+import { SendOrderRequest, GetOrdersRequest, GetPositionsRequest } from './requestType';
 import { CancelOrderRequest, CancelOrderResponse } from '..';
 export interface KabuSApiConfig extends ApiConfig {
     apiPassword: string;
@@ -12,8 +12,8 @@ export declare class KabuSApi extends Api {
     initialize(): Promise<void>;
     private getToken;
     sendOrder(query: SendOrderRequest): Promise<SendOrderResponse>;
-    getWalletCash(params: GetWalletCashRequest): Promise<GetWalletCashResponse>;
-    getWalletMargin(params: GetWalletMarginRequest): Promise<GetWalletMarginResponse>;
+    getWalletCash(): Promise<GetWalletCashResponse>;
+    getWalletMargin(): Promise<GetWalletMarginResponse>;
     getBoard(symbol: string): Promise<GetBoardResponse>;
     getPositions(params: GetPositionsRequest): Promise<GetPositionResponse[]>;
     getOrders(params: GetOrdersRequest): Promise<GetOrderResponse[]>;

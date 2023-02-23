@@ -64,13 +64,17 @@ class KabuSApi extends baseAPI_1.Api {
         const path = "/sendorder";
         return this.post(path, query);
     }
-    getWalletCash(params) {
+    getWalletCash() {
         const path = "/wallet/cash";
-        return this.get(path, params);
+        return this.get(path, {
+            APIPassword: this.apiPassword
+        });
     }
-    getWalletMargin(params) {
+    getWalletMargin() {
         const path = "/wallet/margin";
-        return this.get(path, params);
+        return this.get(path, {
+            APIPassword: this.apiPassword
+        });
     }
     getBoard(symbol) {
         const path = "/board/" + symbol;

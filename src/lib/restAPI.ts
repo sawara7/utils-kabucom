@@ -54,17 +54,21 @@ export class KabuSApi extends Api {
 
   public sendOrder(query: SendOrderRequest): Promise<SendOrderResponse> {
     const path = "/sendorder";
-    return this.post(path, query);
+    return this.post(path, query)
   }
 
-  public getWalletCash(params: GetWalletCashRequest): Promise<GetWalletCashResponse> {
+  public getWalletCash(): Promise<GetWalletCashResponse> {
     const path = "/wallet/cash";
-    return this.get(path, params);
+    return this.get(path, {
+      APIPassword: this.apiPassword
+    })
   }
 
-  public getWalletMargin(params: GetWalletMarginRequest): Promise<GetWalletMarginResponse> {
+  public getWalletMargin(): Promise<GetWalletMarginResponse> {
     const path = "/wallet/margin";
-    return this.get(path, params);
+    return this.get(path, {
+      APIPassword: this.apiPassword
+    })
   }
 
   public getBoard(symbol: string): Promise<GetBoardResponse> {
