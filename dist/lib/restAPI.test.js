@@ -12,7 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const __1 = require("..");
 (() => __awaiter(void 0, void 0, void 0, function* () {
     const api = new __1.KabuSApi({
-        apiPassword: 'honban123'
+        apiPassword: 'honban123',
+        tradePassword: 'password'
     });
     yield api.initialize();
     // const res = await api.getWalletCash({

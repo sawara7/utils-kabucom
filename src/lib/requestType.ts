@@ -1,7 +1,7 @@
 import { exchangeCodeType, OrderSide, productType, SecurityType, stringBoolean } from "./type";
 
 export interface GetTokenRequest {
-  APIPassword: string;
+  APIPassword?: string;
 }
 
 export interface Position {
@@ -10,7 +10,7 @@ export interface Position {
 }
 
 export interface SendOrderRequest {
-  Password: string; //注文パスワード
+  Password?: string; //注文パスワード
   Symbol: string; //銘柄コード
   Exchange: exchangeCodeType; // 市場コード
   SecurityType: SecurityType; //1	株式
@@ -69,11 +69,11 @@ export interface SendOrderRequest {
 }
 
 export interface GetWalletCashRequest {
-  APIPassword: string;
+  APIPassword?: string;
 }
 
 export interface GetWalletMarginRequest{
-  APIPassword: string;
+  APIPassword?: string;
 }
 
 export interface GetOrdersRequest {
@@ -111,7 +111,7 @@ export interface GetOrdersRequest {
 
 export interface CancelOrderRequest {
   OrderId: string //注文番号 sendorderのレスポンスで受け取るOrderID。
-  Password: string //注文パスワード
+  Password?: string //注文パスワード
 }
 
 export interface GetPositionsRequest {

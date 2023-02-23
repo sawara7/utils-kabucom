@@ -41,6 +41,7 @@ class KabuSApi extends baseAPI_1.Api {
         config.endPoint = config.endPoint || URL_API_KABUS;
         super(config, options);
         this.apiPassword = config.apiPassword;
+        this.tradePassword = config.tradePassword;
         this.apiToken = "";
     }
     initialize() {
@@ -58,23 +59,22 @@ class KabuSApi extends baseAPI_1.Api {
     }
     getToken(query) {
         const path = "/token";
+        if (!query.APIPassword) {
+            query.APIPassword = this.apiPassword;
+        }
         return this.post(path, query);
     }
-    sendOrder(query) {
-        const path = "/sendorder";
-        return this.post(path, query);
-    }
-    getWalletCash() {
+    getWalletCash(query) {
         const path = "/wallet/cash";
-        return this.get(path, {
-            APIPassword: this.apiPassword
-        });
+        if (!query || !query.APIPassword)
+            query = { APIPassword: this.apiPassword };
+        return this.get(path, query);
     }
-    getWalletMargin() {
+    getWalletMargin(query) {
         const path = "/wallet/margin";
-        return this.get(path, {
-            APIPassword: this.apiPassword
-        });
+        if (!query || !query.APIPassword)
+            query = { APIPassword: this.apiPassword };
+        return this.get(path, query);
     }
     getBoard(symbol) {
         const path = "/board/" + symbol;
@@ -88,8 +88,16 @@ class KabuSApi extends baseAPI_1.Api {
         const path = "/orders";
         return this.get(path, params);
     }
+    sendOrder(query) {
+        const path = "/sendorder";
+        if (!query.Password)
+            query.Password = this.tradePassword;
+        return this.post(path, query);
+    }
     cancelOrder(params) {
         const path = "/cancelorder";
+        if (!params.Password)
+            params.Password = this.tradePassword;
         return this.put(path, params);
     }
     get(path, query) {

@@ -23,16 +23,19 @@ const URL_API_KABUS = 'http://localhost:18080/kabusapi'
 
 export interface KabuSApiConfig extends ApiConfig {
   apiPassword: string
+  tradePassword: string
 }
 
 export class KabuSApi extends Api {
-  private readonly apiPassword: string;
+  private readonly apiPassword: string
+  private readonly tradePassword: string
   private apiToken: string;
 
   constructor(config: KabuSApiConfig, options?: ApiOptions) {
     config.endPoint = config.endPoint || URL_API_KABUS
     super(config, options)
     this.apiPassword = config.apiPassword
+    this.tradePassword = config.tradePassword
     this.apiToken = ""
   }
 
@@ -48,27 +51,21 @@ export class KabuSApi extends Api {
   }
 
   private getToken(query: GetTokenRequest): Promise<GetTokenResponse> {
-    const path = "/token";
-    return this.post(path, query);
-  }
-
-  public sendOrder(query: SendOrderRequest): Promise<SendOrderResponse> {
-    const path = "/sendorder";
+    const path = "/token"
+    if (!query.APIPassword) {query.APIPassword = this.apiPassword}
     return this.post(path, query)
   }
 
-  public getWalletCash(): Promise<GetWalletCashResponse> {
+  public getWalletCash(query?: GetWalletCashRequest): Promise<GetWalletCashResponse> {
     const path = "/wallet/cash";
-    return this.get(path, {
-      APIPassword: this.apiPassword
-    })
+    if (!query || !query.APIPassword) query = {APIPassword: this.apiPassword}
+    return this.get(path, query)
   }
 
-  public getWalletMargin(): Promise<GetWalletMarginResponse> {
+  public getWalletMargin(query?: GetWalletMarginRequest): Promise<GetWalletMarginResponse> {
     const path = "/wallet/margin";
-    return this.get(path, {
-      APIPassword: this.apiPassword
-    })
+    if (!query || !query.APIPassword) query = {APIPassword: this.apiPassword}
+    return this.get(path, query)
   }
 
   public getBoard(symbol: string): Promise<GetBoardResponse> {
@@ -86,8 +83,15 @@ export class KabuSApi extends Api {
     return this.get(path, params);
   }
 
+  public sendOrder(query: SendOrderRequest): Promise<SendOrderResponse> {
+    const path = "/sendorder"
+    if (!query.Password) query.Password = this.tradePassword
+    return this.post(path, query)
+  }
+
   public cancelOrder(params: CancelOrderRequest): Promise<CancelOrderResponse> {
     const path = "/cancelorder";
+    if (!params.Password) params.Password = this.tradePassword
     return this.put(path, params);
   }
 

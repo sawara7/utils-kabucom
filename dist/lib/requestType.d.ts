@@ -1,13 +1,13 @@
 import { exchangeCodeType, OrderSide, productType, SecurityType, stringBoolean } from "./type";
 export interface GetTokenRequest {
-    APIPassword: string;
+    APIPassword?: string;
 }
 export interface Position {
     HoldID: string;
     Qty: number;
 }
 export interface SendOrderRequest {
-    Password: string;
+    Password?: string;
     Symbol: string;
     Exchange: exchangeCodeType;
     SecurityType: SecurityType;
@@ -25,10 +25,10 @@ export interface SendOrderRequest {
     FrontOrderType: number;
 }
 export interface GetWalletCashRequest {
-    APIPassword: string;
+    APIPassword?: string;
 }
 export interface GetWalletMarginRequest {
-    APIPassword: string;
+    APIPassword?: string;
 }
 export interface GetOrdersRequest {
     product?: productType;
@@ -42,7 +42,7 @@ export interface GetOrdersRequest {
 }
 export interface CancelOrderRequest {
     OrderId: string;
-    Password: string;
+    Password?: string;
 }
 export interface GetPositionsRequest {
     product?: productType;

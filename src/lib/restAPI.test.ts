@@ -2,7 +2,8 @@ import { KabuSApi } from '..'
 
 (async () => {
     const api = new KabuSApi({
-        apiPassword: 'honban123'
+        apiPassword: 'honban123',
+        tradePassword: 'password'
     })
     await api.initialize()
     // const res = await api.getWalletCash({
