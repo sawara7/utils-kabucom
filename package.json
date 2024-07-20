@@ -1,6 +1,6 @@
 {
   "name": "utils-kabucom",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "kabu.com / kabu STATION API utils.",
   "main": "dist/index.js",
   "scripts": {
