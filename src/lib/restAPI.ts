@@ -1,4 +1,3 @@
-import * as querystring from 'querystring'
 import { Api, ApiConfig, ApiOptions } from './baseAPI'
 import {
   GetTokenResponse,
@@ -98,7 +97,7 @@ export class KabuSApi extends Api {
   get<T>(path: string, query?: {}) {
     let params = '';
     if (query && Object.keys(query).length) {
-      params += '?' + querystring.stringify(query);
+      params += '?' + (new URLSearchParams(query)).toString();
     }
     const headers = this.makeHeader();
     return super.get(path, query, headers);
