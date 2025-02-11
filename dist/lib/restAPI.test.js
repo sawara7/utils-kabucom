@@ -15,6 +15,7 @@ const utils_general_1 = require("utils-general");
 (() => __awaiter(void 0, void 0, void 0, function* () {
     console.log((0, utils_trade_1.getExpireDate)());
     const api = new __1.KabuSApi({
+        endPoint: 'http://192.168.2.11/',
         apiPassword: 'honban123',
         tradePassword: 'password'
     });
@@ -23,12 +24,12 @@ const utils_general_1 = require("utils-general");
         APIPassword: 'honban123'
     });
     console.log(res.StockAccountWallet);
-    const res2 = yield api.getBoard("1578@1");
+    const res2 = yield api.getBoard("1579@1");
     console.log(res2.SymbolName, res2.BidPrice, res2.AskPrice);
-    // console.log(res2)
+    console.log(res2);
     // const res3 = await api.sendOrder({
-    //     Password: "xxx",
-    //     Symbol: "1578", //銘柄コード
+    //     Password: "password",
+    //     Symbol: "1579", //銘柄コード
     //     Exchange: 1,
     //     SecurityType: 1,
     //     Side: "2",
@@ -36,13 +37,13 @@ const utils_general_1 = require("utils-general");
     //     DelivType: 2,
     //     FundType: "AA",
     //     AccountType: 4,
-    //     Qty: 1,
-    //     Price: 3180,
-    //     ExpireDay: getExpireDate(),
+    //     Qty: 10,
+    //     Price: 283,
+    //     ExpireDay: 0,
     //     FrontOrderType: 20
     // })
     const res4 = yield api.getOrders({});
-    // console.log(res4)
+    console.log(res4);
     const res5 = yield api.getPositions({});
     let balance1 = 0;
     let balance2 = 0;
@@ -50,8 +51,8 @@ const utils_general_1 = require("utils-general");
     for (const pos of res5) {
         yield (0, utils_general_1.sleep)(100);
         console.log(res5);
-        const res6 = yield api.getBoard(pos.Symbol + "@1");
-        console.log(res6.AskPrice);
+        // const res6 = await api.getBoard(pos.Symbol + "@1")
+        // console.log(res6.AskPrice)
         console.log(pos.LeavesQty);
         balance1 += (pos.LeavesQty) * pos.Price;
     }

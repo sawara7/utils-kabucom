@@ -4,23 +4,23 @@
   "description": "kabu.com / kabu STATION API utils.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "ncu -u && npm install && npm update && tsc",
-    "commit": "git commit -am 'commit' && npm version patch && git push",
+    "build": "ncu -u && pnpm install && pnpm update && tsc",
+    "commit": "git commit -am 'commit' && pnpm version patch && git push",
     "test": "jest"
   },
   "author": "sawara7",
   "license": "MIT",
   "bundleDependencies": [],
   "devDependencies": {
-    "@types/jest": "^29.5.12",
-    "@types/node": "^20.14.11",
-    "@types/ws": "^8.5.11",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.1",
+    "@types/ws": "^8.5.14",
     "jest": "^29.7.0",
-    "ts-jest": "^29.2.3",
-    "typescript": "^5.5.3"
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.7.3"
   },
   "dependencies": {
-    "axios": "^1.7.2",
+    "axios": "^1.7.9",
     "utils-general": "github:sawara7/utils-general",
     "utils-trade": "github:sawara7/utils-trade",
     "ws": "^8.18.0"
